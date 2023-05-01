@@ -2,12 +2,12 @@
 
 <h1>Playlists</h1>
 
-{% for playlists in playlists %}
+{% for playlist in playlists %}
 <div class="card">
-    <a href="{% url 'detail' playlists.id %}">
+    <a href="{% url 'detail' playlist.id %}">
   <div class="card-content">
-    <span class="card-title">{{ playlists.name }}</span>
-    <p>Description: {{ playlists.description }}</p>
+    <span class="card-title">{{ playlist.name }}</span>
+    <p>Description: {{ playlist.description }}</p>
   </div>
 </a>
 </div>

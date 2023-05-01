@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Playlists
+from .models import Playlist
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -15,14 +15,14 @@ def about(request):
     return render(request, "about.html")
 
 @login_required
-def playlists_detail(request, playlist_id):
-  playlists = Playlists.objects.get(id=playlist_id)
-  return render(request, 'playlists/detail.html', { 'playlist': playlists})
+def playlist_detail(request, playlist_id):
+  playlist = Playlist.objects.get(id=playlist_id)
+  return render(request, 'playlists/detail.html', { 'playlist': playlist})
 
 @login_required
-def playlists_index(request):
-    playlists = Playlists.objects.all()
-    return render(request, "playlists/index.html", {"playlists": playlists})
+def playlist_index(request):
+    playlist = Playlist.objects.all()
+    return render(request, "playlists/index.html", {"playlists": playlist})
 
 
 def signup(request):
@@ -44,8 +44,8 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
-class PlaylistsCreate(LoginRequiredMixin, CreateView):
-  model = Playlists
+class PlaylistCreate(LoginRequiredMixin, CreateView):
+  model = Playlist
   fields = ('name', 'description')
 
   def form_valid(self, form):
@@ -54,10 +54,10 @@ class PlaylistsCreate(LoginRequiredMixin, CreateView):
     # Let the CreateView do its job as usual
     return super().form_valid(form)
 
-class PlaylistsUpdate(LoginRequiredMixin, UpdateView):
-  model = Playlists
+class PlaylistUpdate(LoginRequiredMixin, UpdateView):
+  model = Playlist
   fields = ['name', 'description']
 
-class PlaylistsDelete(LoginRequiredMixin, DeleteView):
-  model = Playlists
+class PlaylistDelete(LoginRequiredMixin, DeleteView):
+  model = Playlist
   success_url = '/playlists/'
