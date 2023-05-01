@@ -6,9 +6,11 @@ from django.urls import reverse
 class Playlists(models.Model):
 	name=models.CharField(max_length=50)
 	description=models.TextField(max_length=250)
-	image=models.ImageField()
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return f"{self.name}"
+	
+	def get_absolute_url(self):
+		return reverse('detail', kwargs={'playlists_id': self.id})
 	

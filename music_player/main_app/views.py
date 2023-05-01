@@ -4,6 +4,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 
 # Create your views here.
 def home(request):
@@ -14,10 +16,13 @@ def about(request):
 
 @login_required
 def playlists_detail(request, playlist_id):
-  playlist = Playlists.objects.get(id=playlist_id)
+  playlists = Playlists.objects.get(id=playlist_id)
+  return render(request, 'playlists/detail.html', { 'playlist': playlists})
 
-
-
+@login_required
+def playlists_index(request):
+    playlists = Playlists.objects.all()
+    return render(request, "playlists/index.html", {"playlists": playlists})
 
 
 def signup(request):
@@ -38,3 +43,21 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+class PlaylistsCreate(LoginRequiredMixin, CreateView):
+  model = Playlists
+  fields = ('name', 'description')
+
+  def form_valid(self, form):
+    # Assign the logged in user (self.request.user)
+    form.instance.user = self.request.user  # form.instance is the hedgehog
+    # Let the CreateView do its job as usual
+    return super().form_valid(form)
+
+class PlaylistsUpdate(LoginRequiredMixin, UpdateView):
+  model = Playlists
+  fields = ['name', 'description']
+
+class PlaylistsDelete(LoginRequiredMixin, DeleteView):
+  model = Playlists
+  success_url = '/playlists/'
