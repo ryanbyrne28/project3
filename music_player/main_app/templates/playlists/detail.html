@@ -17,4 +17,47 @@
     </div>
   </div>
 </div>
+</div>
+<div>
+  <form action="" method="POST" autocomplete="off">
+    <a href="{% url 'songs_create' %}" class="btn btn-primary btn-lg">Add Songs</a>
+  </form>
+</div>
+<div class="row">
+  <div class="col s6">
+    <h3>{{ playlist.name }}'s Songs</h3>
+    {% if song.playlist.count %} {% for song in playlist.songs.all %}
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">
+           {{ song.name }}
+        </span>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <h5>No Songs :(</h5>
+    {% endif %}
+  </div>
+<div class="row">
+  <div class="col s6">
+    <h3>Available Songs</h3>
+    {% if songs.count %}
+      {% for song in songs.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              {{ song.title }}
+            </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'assoc_song' playlist.id song.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn">Add</button>
+            </form>
+          </div>
+      {% endfor %}
+    {% else %}
+      <h5>{{playlist.name}} Already Has All Songs Available</h5>
+    {% endif %}
+  </div>
 {% endblock %}

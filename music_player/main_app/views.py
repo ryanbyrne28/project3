@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Playlist
+from .models import Playlist, Song
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -24,6 +24,16 @@ def playlist_index(request):
     playlist = Playlist.objects.all()
     return render(request, "playlists/index.html", {"playlists": playlist})
 
+@login_required
+def assoc_song(request, playlist_id, song_id):
+  # Note that you can pass a toy's id instead of the whole object
+  Playlist.objects.get(id=playlist_id).songs.add(song_id)
+  return redirect('detail', playlist_id=playlist_id)
+
+@login_required
+def remove_song(request, playlist_id, song_id):
+  Playlist.objects.get(id=song_id).songs.remove(song_id)
+  return redirect('detail', playlist_id=playlist_id)
 
 def signup(request):
   error_message = ''
@@ -61,3 +71,21 @@ class PlaylistUpdate(LoginRequiredMixin, UpdateView):
 class PlaylistDelete(LoginRequiredMixin, DeleteView):
   model = Playlist
   success_url = '/playlists/'
+
+class SongsIndex(LoginRequiredMixin, ListView):
+  model = Song
+
+class SongsDetail(LoginRequiredMixin, DetailView):
+  model = Song
+
+class SongCreate(LoginRequiredMixin, CreateView):
+  model = Song
+  fields = '__all__'
+
+class SongUpdate(LoginRequiredMixin, UpdateView):
+  model = Song
+  fields = '__all__'
+
+class SongDelete(LoginRequiredMixin, DeleteView):
+  model = Song
+  success_url = '/songs/'
