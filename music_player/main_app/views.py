@@ -17,12 +17,13 @@ def about(request):
 @login_required
 def playlist_detail(request, playlist_id):
   playlist = Playlist.objects.get(id=playlist_id)
-  return render(request, 'playlists/detail.html', { 'playlist': playlist})
+  songs_playlist_doesnt_have = Song.objects.exclude(id__in = playlist.songs.all().values_list('id'))
+  return render(request, 'playlists/detail.html', { 'playlist': playlist, 'songs': songs_playlist_doesnt_have})
 
 @login_required
 def playlist_index(request):
-    playlist = Playlist.objects.all()
-    return render(request, "playlists/index.html", {"playlists": playlist})
+    playlists = Playlist.objects.filter(user=request.user)
+    return render(request, "playlists/index.html", {"playlists": playlists})
 
 @login_required
 def assoc_song(request, playlist_id, song_id):
@@ -32,7 +33,7 @@ def assoc_song(request, playlist_id, song_id):
 
 @login_required
 def remove_song(request, playlist_id, song_id):
-  Playlist.objects.get(id=song_id).songs.remove(song_id)
+  Playlist.objects.get(id=playlist_id).songs.remove(song_id)
   return redirect('detail', playlist_id=playlist_id)
 
 def signup(request):

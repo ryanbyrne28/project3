@@ -3,16 +3,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 # Create your models here.
-class Playlist(models.Model):
-	name=models.CharField(max_length=50)
-	description=models.TextField(max_length=250)
-	user=models.ForeignKey(User, on_delete=models.CASCADE)
 
-	def __str__(self):
-		return f"{self.name}"
-	
-	def get_absolute_url(self):
-		return reverse('detail', kwargs={'playlist_id': self.id})
 	
 class Song(models.Model):
 	title=models.CharField()
@@ -28,6 +19,19 @@ class Song(models.Model):
 	
 	def get_absolute_url(self):
 		return reverse('songs_detail', kwargs={'pk': self.id})
+	
+class Playlist(models.Model):
+	name=models.CharField(max_length=50)
+	description=models.TextField(max_length=250)
+	user=models.ForeignKey(User, on_delete=models.CASCADE)
+
+	songs = models.ManyToManyField(Song)
+
+	def __str__(self):
+		return f"{self.name}"
+	
+	def get_absolute_url(self):
+		return reverse('detail', kwargs={'playlist_id': self.id})
 
 
 	
