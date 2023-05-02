@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
+{% load static %}
 <h1>Playlist Details</h1>
 
 <div class="row">
@@ -35,7 +36,7 @@
     <div class="card">
       <div class="card-content">
         <span class="card-title">
-          {{ song.title }}
+          {{ song.title }} by <div id="song-artist"> {{song.artist}}</div>
         </span>
       </div>
 
@@ -58,7 +59,7 @@
         <div class="card">
           <div class="card-content">
             <span class="card-title">
-              {{ song.title }} by {{song.artist}}
+              {{ song.title }} by <span id="song-artist"> {{song.artist}}</span>
             </span>
           </div>
           <div class="card-action">
