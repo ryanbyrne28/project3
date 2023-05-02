@@ -3,13 +3,13 @@
 <html>
 <html lang=en>
   <head>
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css" rel="stylesheet"/>
     <meta charset=UTF-8 />
     <meta name=viewport content=width=device-width, initial-scale=1.0 />
     <meta http-equiv=X-UA-Compatible content=ie=edge />
     <title>Choruso</title>
     <link rel="shortcut icon" type="image/ico" href="{% static 'css/images/android-chrome-512x512.png' %}" />
-
-    {% comment %} <link rel="manifest" href="{% static 'site.webmanifest' %}"> {% endcomment %}
     <link
       rel=stylesheet
       href=https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css
@@ -42,10 +42,8 @@
       </nav>
     </header>
     <main class=container>{% block content %} {% endblock %}</main>
-    <footer class=page-footer>
-      <div class=right>
-        All Rights Reserved, © 2023 Music Player
-      </div>
+    <footer class="page-footer">
+     All Rights Reserved, © 2023 Choruso
     </footer>
   </body>
 </html>
