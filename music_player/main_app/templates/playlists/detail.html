@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
+{% load static %}
 <h1>Playlist Details</h1>
 
 <div class="row">
@@ -18,27 +19,39 @@
   </div>
 </div>
 </div>
-<div>
+
+ <div>
   <form action="" method="POST" autocomplete="off">
     <a href="{% url 'songs_create' %}" class="btn btn-primary btn-lg">Add Songs</a>
   </form>
-</div>
+</div> 
+
+
+<hr>
+
 <div class="row">
   <div class="col s6">
     <h3>{{ playlist.name }}'s Songs</h3>
-    {% if song.playlist.count %} {% for song in playlist.songs.all %}
+    {% if playlist.songs.count %} {% for song in playlist.songs.all %}
     <div class="card">
       <div class="card-content">
         <span class="card-title">
-           {{ song.name }}
+          {{ song.title }} by <div id="song-artist"> {{song.artist}}</div>
         </span>
+      </div>
+
+      <div class="card-action">
+        <form action="{% url 'remove_song' playlist.id song.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn">Remove</button>
+        </form>
       </div>
     </div>
     {% endfor %} {% else %}
-    <h5>No Songs :(</h5>
+    <h5>No Songs :( </h5>
     {% endif %}
   </div>
-<div class="row">
+
   <div class="col s6">
     <h3>Available Songs</h3>
     {% if songs.count %}
@@ -46,7 +59,7 @@
         <div class="card">
           <div class="card-content">
             <span class="card-title">
-              {{ song.title }}
+              {{ song.title }} by <span id="song-artist"> {{song.artist}}</span>
             </span>
           </div>
           <div class="card-action">
@@ -55,9 +68,11 @@
               <button type="submit" class="btn">Add</button>
             </form>
           </div>
+        </div>
       {% endfor %}
     {% else %}
       <h5>{{playlist.name}} Already Has All Songs Available</h5>
     {% endif %}
-  </div>
-{% endblock %}
+  </div> 
+
+  {% endblock %} 
