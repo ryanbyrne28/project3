@@ -34,3 +34,24 @@ h1 {
     height: 30px;
     width: 30px;
 }
+.btn-success {
+    float: left;
+}
+.btn-primary {
+    float: right;
+}
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+#removebtn {
+    padding: 0;
+    border: none;
+    background: none;
+}
+#removebtn img {
+    width: 30px;
+    height: 30px;
+    border: none;
+}
