@@ -1,3 +1,36 @@
+body {
+    background-color: #F2F2F2 !important;
+}
 #song-artist {
-    color: blue;
+    color: #B6E1F2;
+    font-style: italic;
+    font-size: smaller;
+}
+h1 {
+    padding: 20px;
+    text-align: center;
+    color: #262626;
+}
+.nav-wrapper {
+     background-color: #617C8C;
+}
+.page-footer {
+    background-color: #617C8C;
+}
+.about-container {
+    background-color: #F2F2F2;
+    padding-bottom: 700px;
+}
+#submitbutton {
+    background-color: #617C8C;
+    color: #F2F2F2;
+}
+.logo {
+    height: 55px;
+    width: 55px;
+    
+}
+.rightlogo {
+    height: 30px;
+    width: 30px;
 }
