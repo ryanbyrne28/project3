@@ -1,14 +1,15 @@
+
 {% extends 'base.html' %} {% block content %}
 
-<h1>Playlists</h1>
+<h1 style="color:#262626; padding-top:20px;"> {{user.username}}'s Playlists</h1>
 
 {% for playlist in playlists %}
 <div class="card">
-    <a href="{% url 'detail' playlist.id %}">
-  <div class="card-content">
-    <span class="card-title">{{ playlist.name }}</span>
-    <p>Description: {{ playlist.description }}</p>
-  </div>
+ <a href="{% url 'detail' playlist.id %}">
+    <div class="card-content">
+        <span class="card-title">{{ playlist.name }}</span>
+        {{playlist.description}}   
+    </div>
 </a>
 </div>
 {% endfor %} {% endblock %}

@@ -1,14 +1,24 @@
 {% extends 'base.html' %} {% block content %}
-
 {% load static %}
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+  Choruso
+  </title>
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css" rel="stylesheet"/>
+  <link href="{% static './style.css' %}" rel="stylesheet"/> 
+ </head>
+
 <h1>Playlist Details</h1>
+ 
 
 <div class="row">
   <div class="col s6">
     <div class="card">
       <div class="card-content">
         <span class="card-title">{{ playlist.name }}</span>
-        <p>Image: {{ playlist.image }}</p>
         <p>Description: {{ playlist.description }}</p>
       </div>
       <div class="card-action">
@@ -25,7 +35,10 @@
     <a href="{% url 'songs_create' %}" class="btn btn-primary btn-lg">Add Songs</a>
   </form>
 </div>
-<hr>
+
+
+
+
 
 <div class="row">
   <div class="col s6">

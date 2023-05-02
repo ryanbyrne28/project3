@@ -1,15 +1,20 @@
 from django.shortcuts import render, redirect
-from .models import Playlist, Song
+from . models import Playlist, Song
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
+from django.core.paginator import Paginator
 
 # Create your views here.
 def home(request):
-    return render(request, "about.html")
+    paginator= Paginator(Song.objects.all(),1)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context={"page_obj":page_obj}
+    return render(request, "playlists/playlist.html", context)
 
 def about(request):
     return render(request, "about.html")
@@ -23,7 +28,7 @@ def playlist_detail(request, playlist_id):
 @login_required
 def playlist_index(request):
     playlists = Playlist.objects.filter(user=request.user)
-    return render(request, "playlists/index.html", {"playlists": playlists})
+    return render(request, "playlists/index.html", {'playlists': playlists})
 
 @login_required
 def assoc_song(request, playlist_id, song_id):
