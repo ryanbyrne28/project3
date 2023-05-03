@@ -339,6 +339,7 @@ h3 {
     justify-content: flex-end;
     float: right;
 }
+
 .row {
     display: flex;
     flex-wrap: wrap;
@@ -353,6 +354,18 @@ h3 {
     height: auto !important;
     overflow-y: scroll !important;
 }
+
+
+p#song-artist {
+    font-size: 16px;
+}
+
+div.card {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+
 
 
 
