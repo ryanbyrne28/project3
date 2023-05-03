@@ -66,6 +66,11 @@ h1 {
 .card-content {
     background-color: #617C8C;
 }
+#openplaylistbtn {
+    display: flex;
+    justify-content: flex-end;
+    /* float: right; */
+}
 
 
 /* <--- media player ---> */
