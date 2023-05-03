@@ -11,6 +11,8 @@ footer{
     bottom: 0;
     width: 100%;
     left: 0;
+    padding: 0;
+    margin: 0;
 }
 h1 {
     padding: 20px;
@@ -24,6 +26,7 @@ h1 {
 .page-footer, span.right{
     background-color: #617C8C;
     text-align: right;
+    padding: 2px 0 0;
 }
 .about-container {
     background-color: #F2F2F2;
