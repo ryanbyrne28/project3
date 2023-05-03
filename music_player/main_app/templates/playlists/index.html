@@ -3,13 +3,21 @@
 
 <h1 style="color:#262626; padding-top:20px;"> {{user.username}}'s Playlists</h1>
 
+
 {% for playlist in playlists %}
+<div id="playlist-container" class="playlist-container">
 <div class="card">
  <a href="{% url 'detail' playlist.id %}">
     <div class="card-content">
         <span class="card-title">{{ playlist.name }}</span>
         {{playlist.description}}   
+            
+        <div id="start">   
+        <a href="{% url 'playlist' playlist.id %}"type="submit"><img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/play-359-551616.png?f=avif&w=256" style="width:50px; height:50px; float:right;"></a> 
+        </div>    
+     
     </div>
 </a>
+</div>
 </div>
 {% endfor %} {% endblock %}
