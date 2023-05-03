@@ -466,4 +466,21 @@ td #card-title {
     background-color: transparent;
     padding: 0;
   }
+
+  .button-group a:hover img {
+    animation: shake 0.5s;
+  }
+  
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(0); }
+    75% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+  } 
+
+  .button-group img,
+  .button-group span {
+    margin-right: 10px;
+  }
   

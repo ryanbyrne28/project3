@@ -25,12 +25,18 @@
               <p>{{ playlist.description }} • {{user.username}}</p>
             </td>
             <td>
-              <div class="button-group" style="display:flex; align-items:center;">
-                <a href="{% url 'playlist' playlist.id %}" type="submit" id="openplaylistbtn" class="btn btn-flat"><img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/play-359-551616.png?f=avif&w=256" style="width:32px; height:32px;" alt="Start Playlist" title="Start Player"/></a>
-                <a href="/songs" class="btn btn-flat"><img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/server-487-551630.png?f=avif&w=256" style="width:32px; height:32px;" alt="View Songs" title="View Songs"/></a>
-                <form action="" method="POST" autocomplete="off">
-                <a href="{% url 'songs_create' %}" class="btn btn-flat"><img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/small-screen-1-551631.png?f=avif&w=256" style="width:32px; height:32px;" alt="Add Songs" title="Add Songs"></a>
-                </form>
+              <div class="button-group" style="display:flex; align-items:center; justify-content:center;">
+                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                  <a href="{% url 'playlist' playlist.id %}" type="submit" id="openplaylistbtn" class="btn btn-flat"><img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/play-359-551616.png?f=avif&w=256" style="width:48px; height:48px;" alt="Start Playlist" title="Start Player"/><span style="margin-top:8px;">Start Playlist</span></a>
+                </div>
+                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                  <a href="/songs" class="btn btn-flat"><img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/server-487-551630.png?f=avif&w=256" style="width:48px; height:48px;" alt="View Songs" title="View Songs"/><span style="margin-top:8px;">View Songs</span></a>
+                </div>
+                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                  <form action="" method="POST" autocomplete="off">
+                    <a href="{% url 'songs_create' %}" class="btn btn-flat"><img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/small-screen-1-551631.png?f=avif&w=256" style="width:48px; height:48px;" alt="Add Songs" title="Add Songs"/><span style="margin-top:8px;">Add Songs</span></a>
+                  </form>
+                </div>
               </div>
             </td>
           </tr>
