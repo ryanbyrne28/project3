@@ -4,12 +4,23 @@
 {% else %}
 <h1>Add Playlist</h1>
 {% endif %}
-<form action="" method="post">
+<div class="container">
+  <form action="" method="post">
+    {% csrf_token %}
+    <table class="custom-table-class">
+      {{ form.as_table }}
+    </table>
+    <div class="center-align">
+      <input type="submit" value="Submit" class="btn" id="submitbutton"/>
+    </div>
+    </form>
+</div>
 
-  {% csrf_token %}
-  <table>
-    {{ form.as_table }}
-  </table>
-  <input type="submit" value="Submit!" class="btn" id="submitbutton"/>
-</form>
+<style>
+  .custom-table-class {
+    width: 30%;
+    margin: 0 auto;
+  }
+</style>
+
 {% endblock %}
