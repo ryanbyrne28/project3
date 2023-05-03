@@ -467,7 +467,7 @@ td #card-title {
     padding: 0;
   }
 
-  .button-group a:hover img {
+  .button-group a:hover img, .delete-playlist:hover {
     animation: shake 0.5s;
   }
   
