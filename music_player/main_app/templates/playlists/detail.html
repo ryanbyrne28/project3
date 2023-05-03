@@ -18,24 +18,34 @@
   <div class="col s6">
     <div class="card">
       <div class="card-content">
-        <span class="card-title">{{ playlist.name }}</span>
-        <p>Description: {{ playlist.description }}</p>
-        <a href="{% url 'playlist' playlist.id %}"type="submit"id="openplaylistbtn"class="btn btn-success">Start Playlist</a>
+        <table>
+          <tr>
+            <td>
+              <span class="card-title">{{ playlist.name }}</span>
+              <p>{{ playlist.description }} •	 {{user.username}}</p>
+            </td>
+            <td><a href="{% url 'playlist' playlist.id %}"type="submit"id="openplaylistbtn"class="btn btn-success">Start Playlist</a></td>
+            
+              <div class="button-group">
+                <td> <a href="/songs" class="btn btn-success">View Songs</a></td>
+                <form action="" method="POST" autocomplete="off">
+                <td><a href="{% url 'songs_create' %}" class="btn btn-primary ">Add Songs</a></td>
+                </form>
+              </div>
+          </tr>
+        </table>
       </div>
+
       <div class="card-action">
         <a href="{% url 'playlist_update' playlist.id %}"type="submit" id="removebtn"><img src="{% static 'css/images/icons8-edit-100.png' %}"alt="Edit"></a>
         <a href="{% url 'playlist_delete' playlist.id %}"type="submit" id="removebtn"><img src="{% static 'css/images/icons8-minus-100 (1).png' %}"alt="Delete"></a>
       </div>
+
     </div>
   </div>
 </div>
 </div>
-<div class="button-group">
-  <a href="/songs" class="btn btn-success">View Songs</a>
-  <form action="" method="POST" autocomplete="off">
-    <a href="{% url 'songs_create' %}" class="btn btn-primary ">Add Songs</a>
-  </form>
-</div>
+
 
 
 
@@ -48,7 +58,8 @@
     <div class="card">
       <div class="card-content">
         <span class="card-title">
-          {{ song.title }} by <span id="song-artist"> {{song.artist}}</span>
+          <p>{{ song.title }}</p>
+          <p id="song-artist"> {{song.artist}}</p>
         </span>
       </div>
 
@@ -71,7 +82,8 @@
         <div class="card">
           <div class="card-content">
             <span class="card-title">
-              {{ song.title }} by <span id="song-artist"> {{song.artist}}</span>
+              <p>{{ song.title }}</p>
+              <p id="song-artist"> {{song.artist}}</p>
             </span>
           </div>
           <div class="card-action">
