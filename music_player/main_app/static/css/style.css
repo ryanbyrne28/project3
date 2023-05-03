@@ -276,12 +276,14 @@ footer{
 h1 {
     padding: 20px;
     text-align: center;
-    color: #262626 !important;
-    font-family: 'Bruno Ace SC', cursive;
+    color: #262626;
+    font-family: 'Sora', sans-serif;
+    font-weight: bolder;
 }
 
 h3 {
-    font-family: 'Bruno Ace SC', cursive; 
+    font-family: 'Sora', sans-serif;
+    font-weight: bolder;
 }
 
 .nav-wrapper {
@@ -330,9 +332,14 @@ h3 {
     height: 30px;
     border: none;
 }
+.card {
+    background-color:#F2F2F2; ;
+}
 .card-content {
     background-color: #617C8C;
     padding: 10px;
+    border: 1px solid black;
+    border-radius: 20px;
 }
 #openplaylistbtn {
     display: flex;
@@ -360,12 +367,103 @@ p#song-artist {
     font-size: 16px;
 }
 
-div.card {
+div.card-action {
     border: 1px solid black;
-    border-radius: 10px;
+}
+
+td #card-title {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.card .card-title {
+    font-size: 30px;
+    font-weight: bold;
 }
 
 
+.card-content #start {
+    float: right;
+    width: 70px; 
+}
 
+  .card-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card-content #start {
+    margin-left: auto;
+  }
 
+  .card-content #start img {
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .card-content #start img:hover {
+    animation: shake 1s;
+  }
+  
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    10%, 90% { transform: translateX(-1px) rotate(0deg); }
+    20%, 80% { transform: translateX(1px) rotate(-5deg); }
+    30%, 50%, 70% { transform: translateX(-2px) rotate(5deg); }
+    40%, 60% { transform: translateX(2px) rotate(-5deg); }
+    100% { transform: translateX(0) rotate(0deg); }
+  }
 
+  .card-content a {
+    text-decoration: none;
+    color: #999;
+  }
+
+  .card-content a:hover {
+    color: #262626;
+  }
+  
+  .card-content a:active {
+    color: black;
+    text-decoration: none;
+  }
+
+  .card {
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto 20px auto;
+  }
+
+  .playlist-container {
+    margin-bottom: 20px;
+  }
+  
+  #songchanges h3 {
+    text-align: center;
+  }
+
+  .playlist-card {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom:20px;
+  }
+
+  .btn-success, .btn-primary {
+    width: 150px;
+    height: 50px;
+  }
+
+  .button-group .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button-group a {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+  }
+  
