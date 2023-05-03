@@ -8,8 +8,8 @@ from django.urls import reverse
 class Song(models.Model):
 	title=models.CharField()
 	artist=models.CharField()
-	image=models.ImageField(blank=True,null=True)
-	audio_file=models.FileField(blank=True,null=True)
+	image=models.ImageField()
+	audio_file=models.FileField()
 	audio_link=models.CharField(max_length=150,blank=True,null=True)
 	duration=models.CharField(max_length=20,blank=True,null=True)
 	paginate_by=2
