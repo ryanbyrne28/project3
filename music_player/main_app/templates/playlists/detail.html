@@ -52,7 +52,7 @@
 
 
 <div class="row">
-  <div class="col s6">
+  <div class="col s6"id="songchanges">
     <h3>{{ playlist.name }}'s Songs</h3>
     {% if playlist.songs.count %} {% for song in playlist.songs.all %}
     <div class="card">
@@ -62,7 +62,7 @@
           <p id="song-artist"> {{song.artist}}</p>
         </span>
       </div>
-
+  
       <div class="card-action">
         <form action="{% url 'remove_song' playlist.id song.id %}" method="post">
           {% csrf_token %}
@@ -75,7 +75,7 @@
     {% endif %}
   </div>
 
-  <div class="col s6">
+  <div class="col s6"id="songchanges">
     <h3>Available Songs</h3>
     {% if songs.count %}
       {% for song in songs.all %}

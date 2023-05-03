@@ -25,7 +25,7 @@ h3#song-artist {
     padding: 0 10%;
     text-align: center;
 }
-.container {
+.containermp {
     display: block;
     width: 100%;
     height: 750px;
@@ -252,7 +252,8 @@ h3#song-artist {
 
 body {
     background-color: #F2F2F2 !important;
-    
+    margin: 0;
+    padding-bottom: 25px;
 }
 p {
     font-family: 'Sora', sans-serif;
@@ -264,9 +265,10 @@ p {
     font-size: smaller;
 }
 footer{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
+    height: 25px;
     left: 0;
     padding: 0;
     margin: 0;
@@ -330,13 +332,27 @@ h3 {
 }
 .card-content {
     background-color: #617C8C;
+    padding: 10px;
 }
 #openplaylistbtn {
     display: flex;
     justify-content: flex-end;
     float: right;
 }
-
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: center;
+    overflow: auto;
+}
+.playlistsongsadded {
+    height: auto !important;
+}
+#songchanges {
+    height: auto !important;
+    overflow-y: scroll !important;
+}
 
 
 
