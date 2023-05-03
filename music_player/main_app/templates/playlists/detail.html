@@ -22,8 +22,8 @@
         <p>Description: {{ playlist.description }}</p>
       </div>
       <div class="card-action">
-        <a href="{% url 'playlist_update' playlist.id %}">Edit</a>
-        <a href="{% url 'playlist_delete' playlist.id %}">Delete</a>
+        <a href="{% url 'playlist_update' playlist.id %}"type="submit" id="removebtn"><img src="{% static 'css/images/icons8-edit-100.png' %}"alt="Edit"></a>
+        <a href="{% url 'playlist_delete' playlist.id %}"type="submit" id="removebtn"><img src="{% static 'css/images/icons8-minus-100 (1).png' %}"alt="Delete"></a>
       </div>
     </div>
   </div>
