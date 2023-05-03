@@ -484,3 +484,10 @@ td #card-title {
     margin-right: 10px;
   }
   
+  .no-underline {
+    text-decoration: none;
+    color:#262626;
+  }
+  .no-underline:hover {
+    color:#999;
+  }
