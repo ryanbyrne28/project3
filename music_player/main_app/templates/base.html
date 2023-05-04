@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<html lang=en>
+  <head>
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css" rel="stylesheet"/>
+    <meta charset=UTF-8 />
+    <meta name=viewport content=width=device-width, initial-scale=1.0 />
+    <meta http-equiv=X-UA-Compatible content=ie=edge />
+    <title>Choruso</title>
+    <link rel="shortcut icon" type="image/ico" href="{% static 'css/images/android-chrome-512x512.png' %}" />
+     <link
+      rel=stylesheet
+      href=https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css
+    /> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> 
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header class=navbar-fixed>
+      <nav>
+        <div class=nav-wrapper>
+          <ul>
+            <li>
+              <a href="/" class="left brand-logo">  <img src="{% static 'css/images/android-chrome-512x512.png' %}" class="logo"></a>  
+            </li>
+          </ul>
+          <ul class="right">
+            {% if user.is_authenticated %}
+           
+            <li><a href="{% url 'playlist_create' %}"><img src='https://cdn.iconscout.com/icon/premium/png-512-thumb/add-1486-551406.png?f=avif&w=256' class='rightlogo' title="Create Playlist"></a></li>
+            <li><a href="{% url 'index' %}"><img src='https://cdn.iconscout.com/icon/premium/png-512-thumb/playlist-39-551618.png?f=avif&w=256'class="rightlogo"title="View All Playlists"></a></li>
+            <li><a href="{% url 'logout' %}"><img src='https://cdn.iconscout.com/icon/premium/png-512-thumb/enter-26-551609.png?f=avif&w=256'class='rightlogo'title="Logout!"></a></li>
+            <li><a href="{% url 'index' %}"><img src='https://cdn.iconscout.com/icon/premium/png-512-thumb/gamer-7895089-6445029.png?f=avif&w=256'class='rightlogo'title='Hi! {{ user.username }}'> </a></li>
+              {% else %}
+            <li><a href="{% url 'signup' %}"><img src='https://cdn.iconscout.com/icon/premium/png-512-thumb/page-322-480523.png?f=avif&w=256'class='rightlogo'title='Sign UP'></a></li>
+            <li><a href="{% url 'login' %}"><img src="https://cdn.iconscout.com/icon/free/png-512/free-login-95-517794.png?f=avif&w=256"class='rightlogo'title='Log In'></a></li> 
+              {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main class=container>{% block content %} {% endblock %} </main>
+    <footer class="page-footer">
+     All Rights Reserved, © 2023 Choruso
+    </footer>
+  </body>
+</html>

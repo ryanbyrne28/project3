@@ -1,0 +1,124 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+  Choruso
+  </title>
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css" rel="stylesheet"/>
+  <link href="{% static './style.css' %}" rel="stylesheet"/> 
+ </head>
+
+<h1>Choruso</h1>
+ 
+
+<div class="row">
+  <div class="col s6">
+    <div class="card playlist-card">
+      <div class="card-content">
+        <table>
+          <tr>
+            <td>
+              <span id="card-title" class="card-title">{{ playlist.name }}</span>
+              <p>{{ playlist.description }} • {{user.username}}</p>
+            </td>
+            <td>
+              <div class="button-group" style="display:flex; align-items:center; justify-content:center;">
+                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                  <a href="{% url 'playlist' playlist.id %}" type="submit" id="openplaylistbtn" class="btn btn-flat"><img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/play-359-551616.png?f=avif&w=256" style="width:48px; height:48px;" alt="Start Playlist" title="Start Player"/><span style="margin-top:8px;">Start Playlist</span></a>
+                </div>
+                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                  <a href="/songs" class="btn btn-flat"><img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/server-487-551630.png?f=avif&w=256" style="width:48px; height:48px;" alt="View Songs" title="View Songs"/><span style="margin-top:8px;">View Songs</span></a>
+                </div>
+                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                  <form action="" method="POST" autocomplete="off">
+                    <a href="{% url 'songs_create' %}" class="btn btn-flat"><img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/upload-folder-26-551404.png?f=avif&w=256" style="width:48px; height:48px;" alt="Upload Songs" title="Add Songs"/><span style="margin-top:8px;">Upload Songs</span></a>
+                  </form>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="card-action">
+        <ul class="menu">
+          <li class="left">
+            <a href="{% url 'playlist_update' playlist.id %}"type="submit" id="removebtn">
+              <span>
+              <img class="left" src="https://cdn.iconscout.com/icon/premium/png-512-thumb/setting-432-551863.png?f=avif&w=256"alt="Edit">
+              </span>
+              <span aria-hidden="true" style="font-size:10px; color:black;">Edit</span>
+            </a>
+          </li>
+        <li class="right">
+          <a href="{% url 'playlist_delete' playlist.id %}"type="submit" id="removebtn" style="float:right;">
+            <span>
+            <img class="right" src="https://cdn.iconscout.com/icon/premium/png-512-thumb/delete-758-551869.png?f=avif&w=256" alt="Delete">
+            </span>
+              <span aria-hidden="true" style="font-size:10px; color:black;">Del</span>
+          </a>
+        </li>
+      </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+<div class="row">
+  <div class="col s6"id="songchanges">
+    <h3>{{ user.username }}'s Songs</h3>
+    {% if playlist.songs.count %} {% for song in playlist.songs.all %}
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">
+          <p>{{ song.title }}</p>
+          <p id="song-artist"> {{song.artist}}</p>
+        </span>
+      </div>
+  
+      <div class="card-action">
+        <form action="{% url 'remove_song' playlist.id song.id %}" method="post">
+          {% csrf_token %}
+          <a href="{% url 'remove_song' playlist.id song.id %}" type="submit" id="removebtn"><img src="{% static 'css/images/icons8-minus-100 (1).png' %}"alt="submit"></a>
+        </form>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <h5 style="text-align:center;">Click the <img src="{% static 'css/images/icons8-add-new-100.png' %}"alt="submit" style="height:32px; width:32px;"> button to add songs to your playlist </h5>
+    {% endif %}
+  </div>
+
+  <div class="col s6"id="songchanges">
+    <h3>Available Songs</h3>
+    {% if songs.count %}
+      {% for song in songs.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              <p>{{ song.title }}</p>
+              <p id="song-artist"> {{song.artist}}</p>
+            </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'assoc_song' playlist.id song.id %}" method="post">
+              {% csrf_token %}
+              <a href="{% url 'assoc_song' playlist.id song.id %}"type="submit" id="removebtn"><img src="{% static 'css/images/icons8-add-new-100.png' %}"alt="submit"> </a>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5 style="text-align:center;">Already Has All Songs Available</h5>
+    {% endif %}
+  </div> 
+
+  {% endblock %} 
