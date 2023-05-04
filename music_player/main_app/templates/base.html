@@ -30,9 +30,10 @@
               <a href="/" class="left brand-logo">  <img src="{% static 'css/images/android-chrome-512x512.png' %}" class="logo"></a>  
             </li>
           </ul>
-          <ul class=right>
+          <ul class="right">
             {% if user.is_authenticated %}
-            <li><a href="{% url 'playlist_create' %}"><img src='https://cdn.iconscout.com/icon/premium/png-512-thumb/add-1486-551406.png?f=avif&w=256'class='rightlogo' title="Create Playlist"></a></li>
+           
+            <li><a href="{% url 'playlist_create' %}"><img src='https://cdn.iconscout.com/icon/premium/png-512-thumb/add-1486-551406.png?f=avif&w=256' class='rightlogo' title="Create Playlist"></a></li>
             <li><a href="{% url 'index' %}"><img src='https://cdn.iconscout.com/icon/premium/png-512-thumb/playlist-39-551618.png?f=avif&w=256'class="rightlogo"title="View All Playlists"></a></li>
             <li><a href="{% url 'logout' %}"><img src='https://cdn.iconscout.com/icon/premium/png-512-thumb/enter-26-551609.png?f=avif&w=256'class='rightlogo'title="Logout!"></a></li>
             <li><a href="{% url 'index' %}"><img src='https://cdn.iconscout.com/icon/premium/png-512-thumb/gamer-7895089-6445029.png?f=avif&w=256'class='rightlogo'title='Hi! {{ user.username }}'> </a></li>

@@ -307,10 +307,7 @@ h3 {
     width: 55px;
     
 }
-.rightlogo {
-    height: 30px;
-    width: 30px;
-}
+
 .btn-success {
     float: left;
 }
@@ -491,3 +488,101 @@ td #card-title {
   .no-underline:hover {
     color:#999;
   }
+
+  .rightlogo {
+    width: 30px;
+    height: 30px;
+  }
+
+
+
+
+
+  /* action buttons hover effects */
+  ul {
+    list-style: none;
+  }
+  
+  
+  hr {
+    border-color: var(--hr-color);
+    margin: 20px 0;
+  }
+  
+  .menu {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+  
+  .menu li {
+    margin-left: 320px;
+    margin-right: 300px;
+    margin-top: 10px;
+}
+  
+  .menu a {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+  
+  .menu a span {
+    transition: transform 0.2s ease-out;
+  }
+  
+  .menu a span:first-child {
+    display: inline-block;
+    padding: 10px;
+  }
+  
+  .menu a span:last-child {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-100%);
+  }
+  
+  
+  .menu a:hover span:first-child {
+    transform: translateY(100%);
+  }
+  
+  .menu a:hover span:last-child,
+  .menu[data-animation] a:hover span:last-child {
+    transform: none;
+  }
+  
+  /* ANIMATIONS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .menu[data-animation="to-top"] a span:last-child {
+    transform: translateY(100%);
+  }
+  
+  .menu[data-animation="to-top"] a:hover span:first-child {
+    transform: translateY(-100%);
+  }
+  
+  .menu[data-animation="to-right"] a span:last-child {
+    transform: translateX(-100%);
+  }
+  
+  .menu[data-animation="to-right"] a:hover span:first-child {
+    transform: translateX(100%);
+  }
+  
+  .menu[data-animation="to-left"] a span:last-child {
+    transform: translateX(100%);
+  }
+  
+  .menu[data-animation="to-left"] a:hover span:first-child {
+    transform: translateX(-100%);
+  }
+  
+
+ 
