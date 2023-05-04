@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Song List</h1>
+
+{% for song in object_list %}
+<div class="card">
+  <a href="{% url 'songs_detail' song.id %}" class="no-underline" >
+  <div class="card-content">
+    <span class="card-title">
+      <p>{{ song.title }}</p>
+      <p id="song-artist"> {{song.artist}}</p>
+  </span>
+  </div>
+  </a>
+</div>
+{% endfor %} {% endblock %}
