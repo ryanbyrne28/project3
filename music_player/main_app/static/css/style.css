@@ -499,6 +499,7 @@ td #card-title {
 
 
   /* action buttons hover effects */
+
   ul {
     list-style: none;
   }
@@ -582,6 +583,18 @@ td #card-title {
   
   .menu[data-animation="to-left"] a:hover span:first-child {
     transform: translateX(-100%);
+  }
+
+
+  .card {
+    position: relative;
+  }
+  
+  .card-action {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
   
 

@@ -1,8 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 {%load static%}
-
 <h1>Song Details</h1>
-
 <div class="card">
     <a href="{% url 'songs_detail' song.id %}">
         <div class="card-content">
@@ -13,9 +11,12 @@
         </div>
     </a>
     <div class="card-action">
-        <a href="{% url 'songs_update' song.id %}">Edit</a>
-        <a href="{% url 'songs_delete' song.id %}">Delete</a>
+        <a href="{% url 'songs_update' song.id %}">
+            <img class="left" src="https://cdn.iconscout.com/icon/premium/png-512-thumb/setting-432-551863.png?f=avif&w=256"alt="Edit" style="width:32px; height:32px;">
+        </a>
+        <a href="{% url 'songs_delete' song.id %}">
+            <img class="right" src="https://cdn.iconscout.com/icon/premium/png-512-thumb/delete-758-551869.png?f=avif&w=256" alt="Delete"style="width:32px; height:32px;">
+        </a>
     </div>
 </div>
-
 {% endblock %}
