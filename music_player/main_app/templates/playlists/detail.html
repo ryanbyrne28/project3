@@ -11,7 +11,7 @@
   <link href="{% static './style.css' %}" rel="stylesheet"/> 
  </head>
 
-<h1>Playlist Details</h1>
+<h1>Choruso</h1>
  
 
 <div class="row">
@@ -34,7 +34,7 @@
                 </div>
                 <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                   <form action="" method="POST" autocomplete="off">
-                    <a href="{% url 'songs_create' %}" class="btn btn-flat"><img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/small-screen-1-551631.png?f=avif&w=256" style="width:48px; height:48px;" alt="Add Songs" title="Add Songs"/><span style="margin-top:8px;">Add Songs</span></a>
+                    <a href="{% url 'songs_create' %}" class="btn btn-flat"><img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/upload-folder-26-551404.png?f=avif&w=256" style="width:48px; height:48px;" alt="Upload Songs" title="Add Songs"/><span style="margin-top:8px;">Upload Songs</span></a>
                   </form>
                 </div>
               </div>
@@ -44,10 +44,25 @@
       </div>
 
       <div class="card-action">
-        <a href="{% url 'playlist_update' playlist.id %}"type="submit" id="removebtn"><img src="{% static 'css/images/icons8-edit-100.png' %}"alt="Edit"></a>
-        <a href="{% url 'playlist_delete' playlist.id %}"type="submit" id="removebtn"><img src="{% static 'css/images/icons8-minus-100 (1).png' %}"alt="Delete"></a>
+        <ul class="menu">
+          <li class="left">
+            <a href="{% url 'playlist_update' playlist.id %}"type="submit" id="removebtn">
+              <span>
+              <img class="left" src="https://cdn.iconscout.com/icon/premium/png-512-thumb/setting-432-551863.png?f=avif&w=256"alt="Edit">
+              </span>
+              <span aria-hidden="true" style="font-size:10px; color:black;">Edit</span>
+            </a>
+          </li>
+        <li class="right">
+          <a href="{% url 'playlist_delete' playlist.id %}"type="submit" id="removebtn" style="float:right;">
+            <span>
+            <img class="right" src="https://cdn.iconscout.com/icon/premium/png-512-thumb/delete-758-551869.png?f=avif&w=256" alt="Delete">
+            </span>
+              <span aria-hidden="true" style="font-size:10px; color:black;">Del</span>
+          </a>
+        </li>
+      </ul>
       </div>
-
     </div>
   </div>
 </div>
@@ -78,7 +93,7 @@
       </div>
     </div>
     {% endfor %} {% else %}
-    <h5>No Songs :( </h5>
+    <h5 style="text-align:center;">Click the <img src="{% static 'css/images/icons8-add-new-100.png' %}"alt="submit" style="height:32px; width:32px;"> button to add songs to your playlist </h5>
     {% endif %}
   </div>
 
@@ -102,7 +117,7 @@
         </div>
       {% endfor %}
     {% else %}
-      <h5>{{playlist.name}} Already Has All Songs Available</h5>
+      <h5 style="text-align:center;">Already Has All Songs Available</h5>
     {% endif %}
   </div> 
 
