@@ -2,6 +2,12 @@
 
 <h1>Song List</h1>
 
+<div style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding-bottom:40px;">
+  <form action="" method="POST" autocomplete="off">
+    <a href="{% url 'songs_create' %}" class="btn btn-flat"><img src="https://cdn.iconscout.com/icon/premium/png-512-thumb/upload-folder-26-551404.png?f=avif&w=256" style="width:48px; height:48px;" alt="Upload Songs" title="Add Songs"/><span style="margin-top:8px;">Upload Songs</span></a>
+  </form>
+</div>
+
 {% for song in object_list %}
 <div class="card">
   <a href="{% url 'songs_detail' song.id %}" class="no-underline" >

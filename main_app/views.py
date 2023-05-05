@@ -96,6 +96,7 @@ class SongsDetail(LoginRequiredMixin, DetailView):
 class SongCreate(LoginRequiredMixin, CreateView):
   model = Song
   fields = ['title','artist','image','audio_file']
+  success_url = '/songs/'
 
 class SongUpdate(LoginRequiredMixin, UpdateView):
   model = Song
